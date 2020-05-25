@@ -18,12 +18,13 @@ class ExchangeRateRequest {
   
   func requestExchangeRate(baseCurrencyCode: String, destinationCurrencyCode: String, completion: @escaping (Result<Double, NetworkError>) -> Void) {
     
-    let url = URL(string: "https://free.currconv.com/api/v7/convert?q=\(baseCurrencyCode)_\(destinationCurrencyCode)&compact=ultra&apiKey=3abd6d4013ac5e883f93")
+    let url = URL(string: "https://prepaid.currconv.com/api/v7/convert?q=\(baseCurrencyCode)_\(destinationCurrencyCode)&compact=ultra&apiKey=pr_47285c49a43f4874bef7d404bf82f294")
     guard let requestUrl = url else {
       completion(.failure(.badURL))
       return
     }
     
+    print("Sending request url: \(requestUrl.absoluteString)")
     var request = URLRequest(url: requestUrl)
     request.httpMethod = "GET"
     request.setValue("application/json", forHTTPHeaderField: "Accept")
